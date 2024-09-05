@@ -6,7 +6,13 @@ myFunction()
 
 function myFunction(myData) {
 
-    console.log(myData);
+    if (myData) {
+        console.log(myData);
+    } else{ 
+        console.log('no data')
+    }
+
+    
 
 
 }
@@ -17,10 +23,13 @@ function myFunction(myData) {
 myArrayFunction()
 
 function myArrayFunction(mydata) {
-
+if (Array.isArray()) {
     mydata.forEach(element => {
         console.log(element);
     });
+}else{
+    console.log('no array')
+}
 }
 
 
@@ -33,8 +42,13 @@ function getData(myUrl) {
 
     fetch(myUrl)
         .then((response) => {
-            console.log(response);
-            return response.json();
+            if (!response.ok) {
+                throw new Error("stop");
+                
+            } else{
+                console.log(response.ok);
+                return response.json();
+            }
         })
         .then((data) => {
             console.log(data)
